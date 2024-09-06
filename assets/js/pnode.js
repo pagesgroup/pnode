@@ -38,7 +38,8 @@ window.addEventListener('load', async e => {
         }
       };
       var options = {
-        useSSL: false,
+        // useSSL: url.protocol === "https:",
+        useSSL: url.searchParams.get('ssl') ? true : false,
         timeout: 3,
         onSuccess() {
           console.log("mqtt connected");
