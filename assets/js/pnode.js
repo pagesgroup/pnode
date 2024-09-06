@@ -1,4 +1,5 @@
-// const mqttport = 1338;
+// var mqttport = 1338;
+// var mqttport = 1884
 // var mqttbroker = "localhost";
 // var mqttbroker = "aliconnect.nl";
 // var mqttbroker = "pol-dc01.polymac.intra";
@@ -10,12 +11,13 @@ window.addEventListener('load', async e => {
   const url = new URL(document.location);
   console.log({url});
   const mqttbroker = url.searchParams.get('mqttbroker');
-  const mqttport = url.searchParams.get('mqttport');
-  console.log({mqttbroker});
+  const mqttport = +url.searchParams.get('mqttport');
+
+  console.log({mqttbroker,mqttport});
   const pathname = url.pathname.substring(1).replace(/^.*pnode\//,'').toCamelCase();
   console.log({url,pathname});
   const path = {
-    test() {
+    test(){
       var mqttClient = new Paho.MQTT.Client(mqttbroker, mqttport, "myclientid_" + parseInt(Math.random() * 100, 10));
       function setValue(topic,value){
         message = new Paho.MQTT.Message(String(value));
