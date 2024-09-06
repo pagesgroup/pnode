@@ -14,7 +14,7 @@ window.addEventListener('load', async e => {
   const pathname = url.pathname.substring(1).replace(/^.*pnode\//,'').toCamelCase();
   console.log({url,pathname});
   const path = {
-    test(){
+    test() {
       var mqttClient = new Paho.MQTT.Client(mqttbroker, mqttport, "myclientid_" + parseInt(Math.random() * 100, 10));
       function setValue(topic,value){
         message = new Paho.MQTT.Message(String(value));
