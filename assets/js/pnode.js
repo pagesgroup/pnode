@@ -6,15 +6,17 @@
 
 const domain = 'polymac/pnode/';
 
-console.log('PNode');
+console.log('PNode2');
 window.addEventListener('load', async e => {
   const url = new URL(document.location);
   console.log({url});
   const mqttbroker = url.searchParams.get('mqttbroker');
   const mqttport = +url.searchParams.get('mqttport');
+  const hmi = await fetch('https://aliconnect.nl/pagesgroup/pnode/assets/yaml/hmi').then(res => res.json());
+  console.log(hmi);
 
   console.log({mqttbroker,mqttport});
-  const pathname = url.pathname.substring(1).replace(/^.*pnode\//,'').toCamelCase();
+  const pathname = url.searchParams.get('pathname') || url.pathname.substring(1).replace(/^.*pnode\//,'').toCamelCase();
   console.log({url,pathname});
   const path = {
     test(){
@@ -53,7 +55,27 @@ window.addEventListener('load', async e => {
       mqttClient.connect(options);
 
       console.log('test');
+      function writeHmi() {
+        function toggle(e,i){
+          // console.log(e.type);
+          const state = e.type === 'mousedown';
+          setValue(domain+'plc/state', state ? i+1 : 0);
+        }
+        $(document.body).append(
+          $('div').class('hmi').append(
+            hmi.buttons.map((row,i) => $('button').class(row.name || row.title).on('mousedown', e => toggle(e,i)).on('mouseup', e => toggle(e,i)).append(
+              // $('span').text(row.title),
+            ))
+          ),
+        );
+      }
+      writeHmi();
       $(document.body).append(
+        $('div').class('hmi').append(
+          hmi.buttons.map(row => $('div').append(
+            $('span').text(row.title),
+          ))
+        ),
         $('div').text('Hello dit is test'),
         $('nav').append(
           $('button').text('Actie 1').on('click', e => {

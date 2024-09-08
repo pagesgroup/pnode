@@ -1,0 +1,17 @@
+.hmi {
+  display: flex;
+  gap: 5px;
+}
+button {
+  flex: 0 0 160px;
+  height: 120px;
+  /* border: solid 1px gray; */
+  border: none;
+  /* border-radius: 5px; */
+  padding: 5px;
+  background-color: rgb(165,170,0);
+  background-repeat: no-repeat;
+}
+button.home {
+  background-image: url('../images/btn-home.png');
+}

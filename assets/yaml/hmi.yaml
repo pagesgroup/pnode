@@ -1,0 +1,15 @@
+buttons:
+  - name: home
+    # title: Home
+  - name: alarms
+  - title: Menu
+  - title: Explorer
+  - title: Setup
+  - title: Info
+  - title: Label picker
+  - title: Robot
+  - title: Product take over
+  - title: Product discharge
+  - title: Production settings
+  - title: Run empty
+  - title: Keys
