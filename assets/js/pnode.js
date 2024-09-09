@@ -6,7 +6,7 @@
 
 const domain = 'polymac/pnode/';
 
-console.log('PNode2');
+console.log('PNode3');
 window.addEventListener('load', async e => {
   const url = new URL(document.location);
   console.log({url});
