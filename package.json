@@ -1,0 +1,30 @@
+{
+  "name": "pnode-210123",
+  "version": "1.0.0",
+  "description": "- [Pagesgroup Polymac PNode 210123 Github Repositorie](https://github.com/pagesgroup/pnode-210123)\r - [Pagesgroup Polymac PNode 210123 Github Page](https://pagesgroup.github.io/pnode-210123/)\r - [PNode 210123 Application](https://pagesgroup.github.io/pnode-210123/app/public/)\r - [PNode 210123 PLT Simulation for testing Aspect](https://pagesgroup.github.io/pnode-210123/plt/public/)",
+  "main": "src/pnode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pagesgroup/pnode-210123.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pagesgroup/pnode-210123/issues"
+  },
+  "homepage": "https://github.com/pagesgroup/pnode-210123#readme",
+  "dependencies": {
+    "aedes": "^0.51.3",
+    "csv-parser": "^3.2.0",
+    "csv-writer": "^1.6.0",
+    "express": "^5.1.0",
+    "js-yaml": "^4.1.0",
+    "mqtt": "^5.13.0",
+    "mssql": "^11.0.1",
+    "net": "^1.0.2",
+    "node-opcua": "^2.153.0"
+  }
+}
