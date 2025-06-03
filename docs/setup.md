@@ -1,3 +1,14 @@
+# Setup
+
+1. Install NodeJS
+1. Install MS-SQL Express server
+1. Install Polymac PNode `npm i @pagesgroup/pnode`
+
+
+
+
+
+
 # MS-SQL Server
 
 1. Download SQL Server 2019 https://www.microsoft.com/en-us/download/details.aspx?id=101064

@@ -22,7 +22,8 @@ C:\Polymac\Logging
 
 The following describes how data sent from Aspect is handled, and what Aspect expects in return:
 
-1. **Aspect places a file named `BatchData.csv` in `C:\Polymac\JobInfo`.**
+1. Aspect places a file named `BatchData.csv` in `C:\Polymac\JobInfo`.
+
 2. The PC reads and validates the CSV file:
    - **Invalid Data:**
      - Valid data is extracted and processed.
@@ -33,14 +34,14 @@ The following describes how data sent from Aspect is handled, and what Aspect ex
 
 ### 📑 BatchData.csv Structure
 
-| Col. | Item            | Purpose                                 | Where used                      | Max Field Length | PLC Field Length |
-|:-----|:----------------|:------------------------------------------|:----------------------------------|:----------------|:----------------|
-| 1    | JobId           | Job control                              | Communication between Aspect and PC | 40             | 40             |
-| 2    | JobRun          | Job control                              | Communication between Aspect and PC | 3              | -              |
-| 3    | DesiredYield    | Number of products to be produced        | Batch control in PLT               | 8              | 8              |
-| 4    | MaterialID      | Name printed on label                    | Printer in box packing             | 30             | 40             |
-| 5    | ScheduleIndex   | Production sequence                      | Used to order the Jobs             | 3              | 8              |
-| 6-21 | [Various Fields] | Refer to original document               | See original table                 | See original   | See original   |
+| Col. | Item            | Purpose                                 | Where used                          | Max Field Length | PLC Field Length |
+|:-----|:----------------|:----------------------------------------|:------------------------------------|:---------------|:---------------|
+| 1    | JobId           | Job control                             | Communication between Aspect and PC | 40             | 40             |
+| 2    | JobRun          | Job control                             | Communication between Aspect and PC | 3              | -              |
+| 3    | DesiredYield    | Number of products to be produced       | Batch control in PLT                | 8              | 8              |
+| 4    | MaterialID      | Name printed on label                   | Printer in box packing              | 30             | 40             |
+| 5    | ScheduleIndex   | Production sequence                     | Used to order the Jobs              | 3              | 8              |
+| 6-21 | [Various Fields] | Refer to original document             | See original table                  | See original   | See original   |
 
 ## 📤 Active Job (JobChange)
 

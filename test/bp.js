@@ -11,7 +11,7 @@
 **/
 console.log('SIM BP / Boxpacker');
 const net = require('net');
-const aim = require('./aim');
+const aim = require('../src/aim');
 const config = aim.loadConfig();
 const plt = aim.tcpServer(config.bp,{
   ondata(received) {

@@ -21,27 +21,27 @@ const config = aim.loadConfig();
 const {root} = config;
 const {mqttClient,publish} = aim.mqtt();
 const aspect = {
-  writeCsv(options){
-    const {path,rows} = options;
+  checkData(data) {
+    return true;
+  },
+  writeCsv(options,path){
+    const {rows} = options;
     const header = Object.keys(rows[0]).map(id => Object({id,title: id}));
-    const csvWriter = createObjectCsvWriter({
-      path: './data' + path,
-      header,
-    });
-    csvWriter.writeRecords(rows).then(() => console.log('CSV opgeslagen als output.csv'));
+    const csvWriter = createObjectCsvWriter({path,header});
+    csvWriter.writeRecords(rows).then(() => console.log(`Saved: ${path}`));
   },
   readCsvJobInfo() {
-    const filename = './data/BatchData.csv';
+    const filename = './data/JobInfo/BatchData.csv';
     if (fs.existsSync(filename)) {
       const results = [];
       fs.createReadStream(filename)
       .pipe(csv())
       .on('data', (row) => results.push(row))
       .on('end', () => {
-        console.log('SET /aspect/jobinfo');
         publish('/aspect/jobinfo', results);
-        const destfilename = filename.replace(/data/,'data/processed').replace(/csv$/,aim.getTimestamp() + '.csv');
-        fs.rename(filename, destfilename, (err) => err ? console.log(err) : null);
+        const destpath = `data/JobInfo/${aspect.checkData(results) ? 'Processed' : 'Error'}`;
+        const destfilename = filename.replace('data/JobInfo',destpath).replace(/\.csv$/, `_${aim.getTimestamp()}.csv`);
+        fs.rename(filename, destfilename, console.log);
         setTimeout(aspect.readCsvJobInfo, 10000);
       });
     } else {
@@ -56,13 +56,16 @@ mqttClient.on('message', (topic, message) => {
   const data = JSON.parse(message);
   switch (path) {
     case '/aspect/jobchange': {
-      return aspect.writeCsv(data);
+      return aspect.writeCsv(data, `./data/JobChange/JobChange_${aim.getTimestamp()}.csv`);
     }
     case '/aspect/finishedcartons': {
-      return aspect.writeCsv(data);
+      return aspect.writeCsv(data, `./data/FinishedCartons/FinishedCartons_${aim.getTimestamp()}.csv`);
     }
     case '/aspect/rejects': {
-      return aspect.writeCsv(data);
+      return aspect.writeCsv(data, `./data/Rejects/Rejects_${aim.getTimestamp()}.csv`);
+    }
+    case '/aspect/error': {
+      return aspect.writeCsv(data, `./data/ErrorInfo/ErrorInfo_${aim.getTimestamp()}.csv`);
     }
   }
 });
