@@ -1,4 +1,4 @@
-# PNode 210123
+# PNode
 
 # Install
 

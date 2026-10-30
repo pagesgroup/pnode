@@ -1,0 +1,1424 @@
+info:
+  name: Polymac CMDB
+
+products:
+  - name: Model
+    pail_size:
+    pail_shape: Round
+    pail_height:
+    pail_diameter:
+    pail_datasheet:
+    handle_material:
+    handle_art: 
+    handle_shape:
+    handle_width:
+    handle_length:
+    handle_diameter:
+    handle_datasheet:
+template:
+  properties:
+    properties_product: &properties_product
+      # Product
+      product_name:
+        legend: 🪣 Product
+      pail_size:
+      pail_shape:
+        defaultValue: Round
+        options:
+          - title: Round
+            img: /assets/images/prod/shape-round.png
+          - title: Oval
+            img: /assets/images/prod/shape-oval.png
+          - title: Square
+            img: /assets/images/prod/shape-square.png
+          - title: Rectanglar
+            img: /assets/images/prod/shape-rect.png
+      pail_height:
+        unit: mm
+        min: 160
+        max: 360
+      pail_diameter:
+        unit: mm
+        min: 160
+        max: 330
+      pail_width:
+        unit: mm
+        min: 160
+        max: 390
+      pail_length:
+        unit: mm
+        min: 0
+        max: 300
+      pail_datasheet:
+    properties_config: &properties_config
+      artnr:
+        legend: Configuration
+        options:
+          - value: 900001 # BM
+            title: BM
+          - value: 900007 # BME
+            title: BME
+          - value: 900002 # BMF
+            title: BMF
+          - value: 900003 # BPBS
+            title: PBS
+          - value: 900004 # PBSB
+            title: PBSB
+          - value: 900005 # PBM
+            title: PBM
+          - value: 900010 # BMM
+            title: BMM
+          - value: 900011 # MH-BMF
+            title: MHBMF
+          - value: 900012 # MH-PBS
+            title: MHPBS
+          - value: 900013 # MH-PBSB
+            title: MHPBSB
+          - value: 900014 # MH-PBM
+            title: MHPBM
+          - value: 900101 # PLE
+            title: PLE
+          - value: 900102 # PLEA
+            title: PLEA
+          - value: 900103 # PLD
+            title: PLD
+      model:
+        legend: Configuration
+        options:
+          - &prop_s
+            value: S 
+            title: Standard
+            items:
+              - Cycletime 5.0 seconds or more per pail
+          - &prop_sp
+            value: SP 
+            title: Plus
+            artnr: 901001
+            items:
+              - Cycletime 3.8 seconds or more per pail
+              - Voorcentreren
+          - &prop_hp
+            value: HP 
+            title: High Performance
+            artnr: 901002
+            items:
+              - Cycletime 2.5 seconds or more per pail
+              - Voorcentreren
+              - High speed doorzetten
+      size:
+        legend: Configuration
+        defaultValue: 05
+        options:
+          - value: '05' 
+            title: Max width n mm
+          - value: '10' 
+            title: Max width n mm
+          - value: '20' 
+            title: Max width n mm
+      control_cabinet_type: &control_cabinet_type
+        legend: Configuration
+        title: Cabinet Type
+        options:
+          - value: CE
+            title: Power supply 230 - 400V / 50Hz
+          - value: UL
+            artnr: 901051
+            title: Power supply 480V 3 phase + PE 60 Hz
+      control_cabinet_safety: &control_cabinet_safety
+        legend: Configuration
+        title: Cabinet Safety
+        options:
+          - title: Standard
+          - title: Split power/control cabinet
+            artnr: 901052 # Gescheiden kast variant
+      operation_side:
+        options:
+          - title: Right side operation
+            value: R
+            items:
+              - Right sided HMI
+              - Right sided Control Cabinet
+              - Right sided Reject Exit
+          - title: Left side operation
+            value: L
+            items:
+              - Left sided HMI
+              - Left sided Control Cabinet
+              - Left sided Reject Exit
+      door_type:
+        options:
+          - title: Swing doors
+            description: Daar waar mogelijk worden draaideuren gebruikt
+          - title: Sliding doors
+            artnr: 901022
+            description: Daar waar mogelijk worden draaideuren vervangen voor schuifdeuren          
+    properties_handle_metal: &properties_handle_metal
+      handle_material:
+        legend: 🪣 Product
+        defaultValue: Metal
+      handle_art:
+      handle_shape:
+        defaultValue: Round
+        options:
+          - title: Round
+            img: /assets/images/prod/beugel-t4.png
+          - title: Round Pin
+            img: /assets/images/prod/beugel-t5.png
+          - title: Grip Round
+            img: /assets/images/prod/beugel-t3.png
+          - title: Grip 4H
+            img: /assets/images/prod/beugel-t1.png
+          - title: Grip 6H
+            img: /assets/images/prod/beugel-t2.png
+          - title: Grip Wide
+            img: /assets/images/prod/beugel-t6.png
+            descrition: kdfjgh dkfhg sdjfgsdjfhgs dfgkshdjkgf lskdfgksdk
+            mat:
+              - art: A35347623 
+                qnt: 
+                price: 3000
+      handle_width:
+        unit: mm
+        min: 2.6
+        max: 4.4
+      handle_length:
+        unit: mm
+        min: 380
+        max: 720
+      handle_diameter:
+        unit: mm
+        max: 400
+        min: 200
+      handle_datasheet:
+      grip_shape:
+        options:
+          - title: Metal
+          - title: Plastic
+      grip_diameter:
+        unit: mm
+        min: 8
+        max: 10
+      grip_length:
+        unit: mm
+        min: 70
+        max: 80
+      handle_grip_application:
+        legend: Machine configuration
+        # title: Griprol feeder
+        title: Handle Grip application
+        defaultValue: Included
+        options:
+          - title: Special grip feeder due to dimensions
+            description: Er is een trilvuller aanwezig voor de aanvoer van de griprol.
+              Optie is standaard aan. Maar als geen griprol nodig is kan deze worden verwijderd.
+      griprol_detection:
+        title: Griprol detection
+        description: Griproldetectie(vormstation) Letica/Amcor US. Optie aan eind basisplaat.
+          Extra controle of griprol niet is verloren.
+    properties_handle_plastic: &properties_handle_plastic
+      handle_material:
+        defaultValue: Plastic
+      handle_shape:
+        defaultValue: Round
+      handle_width:
+        unit: mm
+      handle_length:
+        unit: mm
+      handle_datasheet:
+    properties_lid: &properties_lid
+      product_name:
+      lid_size:
+      lid_shape:
+        legend: 🪣 Product
+        defaultValue: Round
+        options:
+          - title: Round
+            img: /assets/images/prod/shape-round.png
+          - title: Oval
+            img: /assets/images/prod/shape-oval.png
+          - title: Square
+            img: /assets/images/prod/shape-square.png
+          - title: Rectanglar
+            img: /assets/images/prod/shape-rect.png
+      lid_height:
+        unit: mm
+        min: 0
+        max: 300
+      lid_diameter:
+        unit: mm
+        min: 0
+        max: 300
+      lid_datasheet:
+    # properties_test: &properties_test
+    #   product_test:
+    #     title: Testen
+    #     defaultValue: No
+    #     decription: Product wordt op lactie Polymac getest op de machine
+    #   product_set:
+    #     title: Wisselset
+    #     defaultValue: No
+    #     decription: Er wordt een wisselset meegeleverd voor het product
+    #   product_optional:
+    #     title: Optioneel
+    #     defaultValue: No
+    #     decription: De machine moet in de toekomst geschikt gemaakt kunnen worden voor het product
+    properties_project: &properties_project
+      packing:
+        legend: General
+        options: 
+          - title: Excluded
+          - title: Included
+          - title: Skid packing and stowing for ocean freight, incl. VGM and EX/A document.
+      warranty:
+        legend: General
+        options: 
+          - title: 12 months warranty after installation. 
+          - title: 24 months warranty after installation. 
+          - title: 36 months warranty after installation. 
+      installation:
+        options: 
+          - title: Excluded
+          - title: Included
+      training:
+        options: 
+          - title: Excluded
+          - title: Included
+      shipping:
+        options: 
+          - title: Excluded
+          - title: Included
+    properties_frame: &properties_frame
+      # Mechanical
+      base_frame:
+        legend: Mechanical
+        defaultValue: Welded steel 
+      color_frame:
+        legend: Mechanical
+        options:
+          - title: White (RAL 9003)
+          - title: Custom
+      color_plating:
+        legend: Mechanical
+        options:
+          - title: White (RAL 9003)
+          - title: Custom
+      # Cycle time:
+      #   defaultValue: 6 sec		
+    properties_base: &properties_base
+      # Performance
+      <<: *properties_frame
+      # Dimensions
+      floor_area:
+        legend: Dimensions
+        description: without roller conveyor
+        defaultValue: 2.700 x 1.210 mm
+      maximum_machine_height:
+        defaultValue: 2.450 mm
+      outfeed_roller_conveyor:
+        defaultValue: 1.500 mm
+      belt_height:
+        defaultValue: ± 600 mm
+        description: from ground (feed-through)
+      weight:
+        defaultValue: ± 1.500 kg
+      # Configuration
+      centering:
+        title: Centering
+        defaultValue: Included
+      oval_centering:
+        title: Oval product
+        # defaultValue: Excluded
+        options:
+          - title: Excluded
+          - title: Included
+            artnr: 901020
+      top_cover:
+        legend: Configuration
+        description: De machine wordt daar waar mogelijk voorzien van afscherming aan de bovenkant.
+        # defaultValue: Excluded
+        options:
+          - title: Excluded
+          - title: Included
+            artnr: 901039
+      machine_led_lighting:
+        description: LED verlichting in de machine
+        # defaultValue: Excluded
+        options:
+          - title: Excluded
+          - title: Included
+      # Product transport
+      pails:
+        options:
+        - title: Must be brought to the machine bottom down
+
+      infeed_conveyor:
+        legend: Configuration
+        title: Infeed conveyor
+        description: Invoerband. Lengte is standaard 1500 mm. 
+          Kan eventueel opgegeven worden door de klant.
+        options:
+          - title: None
+          - title: Conveyor belt
+            artnr: 901015
+            description: Driven in-feed conveyor, 1500mm
+          - title: Roller conveyor
+            description: Non-driven in-feed rollerveyor with a length of max. 1.500 mm. 
+              Additionally the guiderail will be bend to guide the products 
+              from the lift table to the infeed direction of the handle fitting machine.
+              Bestaat dez eoptie?
+      product_step:
+        defaultValue: 450
+        options:
+        - value: 400
+          title: Max diameter < 400
+        - value: 450
+          title: Max diameter < 450
+      product_stepping:
+        legend: Product transport
+        title: Product stepping
+        # defaultValue: Step motor driven conveyor belt for pail transport
+        options:
+          - title: Beld driven
+            description: Doorzetten emmers door band doordraaien.
+          - title: Forced shift forward
+            # title: Pail transport Servo driven
+            description: Emmertransport door de machine middels aangedreven doorzet mechanisme.
+              Is vereist op een HP machine in verband met de snelheid.
+      product_outfeed:
+        legend: Product transport
+        # defaultValue: Roller conveyor
+        options:
+          - title: Roller conveyor Straight
+            description: Roller conveyor of 1.500 mm length
+          - title: Roller conveyor Right
+          - title: Roller conveyor Left
+          - title: Driven conveyor
+          - title: Excluded
+          - title: Custom
+            description:
+      reject_outfeed:
+        # defaultValue: Excluded
+        options:
+          - title: Excluded
+          - title: Reject Roller conveyor
+            description: The rejects will be buffered on a rollerveyor instead of 
+              being dropped on the ground, 
+              length 1.000 mm.
+      # Stacking
+      stacker:
+        description: Integrated in system
+        # defaultValue: Stacker
+        options:
+          - title: Stacker
+            description: Koud in warm (pneum.)
+          - title: Turn Stacker
+            description: Draai stapelaar (vereist bij HP variant)
+          - title: None
+          # - title: Twin Stacker
+          #   description: Koud in warm HP Twin stacker(servo)
+      stacking_type:
+        defaultValue: Cold in warm (pneumatic)
+      stacking_height:
+        defaultValue: Max 1.400 mm (standard)
+        
+      # Inspection
+      cwl_detection:
+        legend: Configuration
+        title: CWL detection
+        # defaultValue: Excluded
+        options:
+          - title: Excluded
+          - title: Included
+            artnr: 901048
+            description: Child Warning Label detection.
+      dot_matrix_barcode_reader:
+        legend: Configuration
+        title: Dot Matrix Barcode Reader
+        description: CWL detection is standard. An extra dot matrix / barcode reader is added for orientation and
+          Program for reject/accept IML.
+        description1: Een Data Matrix Camera die de matrix controleerd of deze wel correct is.
+          Alleen Goed/Fout controle.
+          Geen data vergelijking.
+        options:
+          - title: Excluded
+          - title: Included
+            artnr: 901049
+
+      code_reader:
+        legend: Optional
+        # defaultValue: No
+        description: An extra dot matrix / barcode reader is added
+          for orientation and Program for reject/accept IML.
+        options:
+          - title: Excluded
+          - title: Included
+      vision_inspection:
+        description: Buiten machine Hildering. Ronde emmer. Custom. Spot detectie > 2.5 Gallon. 
+          Pas op kind in emmer. 
+          CWL detectie.
+        options:
+          - title: Excluded
+          - title: Included
+      vision_inspection_prep:
+        description: To have the machine prepared to be able to work with a vision system, but not include it yet.
+        options:
+          - title: Excluded
+          - title: Included
+
+      led_lighting:
+        legend: Configuration
+        # defaultValue: Excluded
+        options: 
+          - title: Excluded
+          - title: Included
+            description: LED lighting in machine
+      # colorsensor_preperation:
+
+      # Safety
+      safety_doors:
+        legend: Configuration
+        # defaultValue: Unlocked
+        options: 
+          - title: Standard unlocked
+          - title: Lockable doors
+            description: Doors need to be unlocked before opening
+              if the system is in an undefined situation 
+              special security level is required before opening 
+      safety_counter_weight:
+        legend: Configuration
+        # defaultValue: No
+        options: 
+          - title: Exclude
+          - title: Included
+      # Interfaces
+      language:
+        legend: Controls
+        # defaultValue: English
+        options:
+          - title: English
+            value: EN
+          - title: German
+            value: DU
+          - title: Nederlands
+            value: NL
+          - title: French
+            value: FR
+          - title: Polish
+            value: PL
+          - title: Spanisch
+            value: ES
+
+      dual_operation:
+        legend: Configuration
+        # defaultValue: Excluded
+        options:
+          - title: Excluded
+          - title: Included
+            artnr: 901011
+            description: The machine will be provided with a HMI on both sides.
+              # Een extra HMI wordt aan de linkerzijde van de machine geplaatst.
+              # De machine kan aan 2 zijden worden bediend.
+      single_power_outlet:
+        legend: Configuration
+        options:
+          - title: Excluded
+          - title: Single power outlet 110V outside main control panel
+      internet_connection:
+        legend: Configuration
+        title: Internet Connection
+        # art: internet_connection
+        description: This enables us to review the condition of the Handle Fitting machine 
+          in case any first line service or support is required.
+        defaultValue: 1
+        options:
+          - title: Excluded
+          - title: Included
+            artnr: 901046
+
+      upstream_interface:
+        legend: Controls
+        options:
+          - title: Signaal <> Upstream app. (K25)
+      # Controls
+      control_cabinet_cooling:
+        legend: Controls
+        title: Control Cabinet Cooling
+        # defaultValue: Excluded
+        options:
+          - title: Excluded
+          - title: Included
+            artnr: 901024
+            description: Watercooled for Hot Environments or IML
+      control_type:
+        defaultValue: 1
+        options:
+          - title: SAIA
+          - title: Rockwell
+      # Resources
+      air_supply:
+        legend: Resources
+        title: Air Supply
+        defaultValue: Minimum 6 bar (maximum 8 bar)
+      air_consumption:
+        legend: Resources
+        title: Air Consumption
+        defaultValue: 44 m³/h (4.3 sec / cycle)
+      power_consumption:
+        defaultValue: 3.5 kWh (4.3 sec / cycle)
+      operating_temperature:
+        defaultValue: 10°C - 40°C
+      noise_level:
+        defaultValue: 75 dB(A), peak 88 dB(A) at compressed air exhaust from pneumatic equipment
+      # Finishing
+      quality_level:
+        # defaultValue: A
+        options:
+          - title: A
+            items:
+              - Default
+          - title: B
+            items:
+              - Lift cilinders met slag 100mm
+              - Motor van Servoband afschermen
+              - Spindelverstelling stapelaar tbv. intern transport
+              - Rollenbaan; breedte product/lengte rollen en aantal rollen controleren, lengte tot einde afscherming, geen eindaanslag!
+                  Altijd stalen rollen(m.i.v. 12-09-19)
+              - Nordlock ringen; toepassen bij delen welke gelijk aan of boven het niveau van het product zitten en waar er een risico is dat er een bout/ring/moer in het product kan vallen.
+              - Metaalhoudende Ty-wraps toepassen
+      <<: *properties_project
+    properties_bm: &properties_bm
+      wire_seperation:
+        legend: Machine configuration
+        title: Wire separation
+        defaultValue: Unscrambling function
+      handle_side_selection:
+        title: Handle Side Selection
+        description: Handel altijd aan juiste zijde. 
+          vereist een identificatie methode als de emmer rond is identiek van vorm. 
+          Er moet bepaald worden aan welke zijde het label zit.
+          Er verschillende methoden om te bepalen waar het etiket zit.
+          Dit kan met vision of een sensor als de emmer niet symetrisch is. 
+
+          Heet ook wel Omrollen. 
+          Afhankelijk van product. 
+          PBS/PBM. Wel/niet nodig.
+          te bepalen tijdens offerte fase. Wat zijn prijs consequenties.
+        options:
+          - title: Excluded
+          - title: Included
+            artnr: 901012
+      handle_infeed:
+        defaultValue: Magazine for straight pre-cut handles
+      handle_assembly:
+        defaultValue: After pre-centring
+      # grip_assembly:
+      #   defaultValue: Grip integration
+      #   options:
+      #     - title: Included
+      #     - title: Excluded
+      #       artnr: 901010
+      grip_detection:
+        description: Griprol aanwezigheid detectie
+        defaultValue: Excluded
+        options:
+          - title: Excluded
+          - title: Included
+            artnr: 901033
+      knob_presence_detection:
+        description: Controle of knop aanwezig is
+        defaultValue: Included
+      knob_quality_inspection:
+        title: Knob inspection
+        description: Keyence vision camera om te kijken of de knop aan de hendel wel goed gevormd is.      
+      # knob_quality:
+        defaultValue: Excluded
+        options:
+          - title: Excluded
+          - title: Included
+            description: Vison Knob quality check.
+            artnr: 901031
+system:
+  properties:
+    <<: *properties_config
+  row:
+    products: []
+
+articles:
+  - artnr: 900001 # BM
+    descr: The Polymac basic installation for the handle fitting and forming of a single pail and handle product. Size starting at 10L. #iets roepen mbt de wire diameter?
+    type: bm
+    description: Metal Handle Forming and Fitting Machine Standard
+    img: /assets/images/art/bm-12.png
+    datasheets:
+      - title: BM-S-Layout-EN.pdf
+        href: /assets/images/art/layout/A210635-BM-S-Layout-EN.pdf
+      - title: BM-HP-Layout-EN.pdf
+        href: /assets/images/art/layout/A236182-BM-HP-Layout-EN.pdf
+    properties:
+      <<: *properties_config
+      <<: *properties_base
+      # <<: *properties_test
+      cooling_water:
+        legend: Resources
+        description: Cooling for hydraulik unit
+        defaultValue: Cooling water In/Out 2-3 Bar
+    sbs:
+      img: /assets/images/art/sbs/dia1.png
+  - artnr: 900007 # BME
+    type: bme
+    description: Metal Handle Forming and Fitting Machine Economic
+    img: /assets/images/art/bm-12.png
+    properties:
+      <<: *properties_config
+      # <<: *properties_test
+      <<: *properties_base
+      <<: *properties_project
+  - artnr: 900002 # BMF
+    descr: Polymac Metal Handle Form and Fitting Flex solution for a variaty in pail and handle sizes round and rectangular up to 20L
+    type: bmf
+    description: Metal Handle Form and Fitting Machine Flex
+    img: /assets/images/art/bmf-12.png
+    properties:
+      <<: *properties_config
+      # <<: *properties_test
+      <<: *properties_base
+      <<: *properties_project
+    sbs:
+      img: /assets/images/art/sbs/dia2.png
+  - artnr: 900003 # PBS
+    descr: Polymac dedicated Plastic handle fitting machine for single type plastic strip handles.
+    type: pbs
+    description: Plastic Handle Fitting Machine Strip
+    img: /assets/images/art/pbs-12.png
+    properties:
+      <<: *properties_config
+      model:
+        legend: Configuration
+        defaultValue: S
+        artnr: 903000
+        options:
+          - value: S 
+            title: Standard
+            items:
+              - Cycletime 5.0 seconds or more per pail
+          - value: SP 
+            title: Plus
+            artnr: 903001
+            items:
+              - Cycletime 3.8 seconds or more per pail
+              - Voorcentreren
+          # - value: HP 
+          #   title: High Performance
+          #   artnr: 903002
+          #   items:
+          #     - Cycletime 2.5 seconds or more per pail
+          #     - Voorcentreren
+          #     - High speed doorzetten
+      # <<: *properties_test
+      <<: *properties_base
+      <<: *properties_project
+      handle_push:
+        legend: Configuration
+        title: Tight around the rim
+        # defaultValue: Excluded
+        options:
+          - title: Excluded
+          - title: Included
+            artnr: 903003
+            description: Omrollen, Aandrukken plastic strip beugel 
+              zodat deze netjes rond de emmer gaat zitten
+              Alleen bij PBS avraint en vereist als de beugel strak om de emmer zit 
+              en niet vanzelf om de emmer valt.
+      handle_infeed_buffer:
+        legend: Configuration
+        # defaultValue: Default
+        options:
+          - title: Excluded
+          - title: Included
+            artnr: 901037
+            description: Buffer band. The Buffer conveyor creates extra buffer capacity 
+              for inserting Handle-strips into the magazine 
+              for about 350 extra handles.
+    sbs:
+      img: /assets/images/art/sbs/dia3.png
+  - artnr: 900004 # PBSB
+    descr: Polymac Plastic Handle Fitting solution for fixed preformed plastic handles.
+    type: pbsb
+    description: Plastic Handle Fitting Machine Fixed
+    img: /assets/images/art/pbsb-12.png
+    properties:
+      <<: *properties_config
+      # <<: *properties_test
+      <<: *properties_base
+      <<: *properties_project
+    sbs:
+      img: /assets/images/art/sbs/dia4.png
+  - artnr: 900005 # PBM
+    descr: Polymac Plastic Handle Fitting machine with Mat infeed. Handles are cut out of the mat and fitted to the pail.
+    type: pbm
+    description: Plastic Handle Fitting Machine Mat
+    img: /assets/images/art/pbm-12.png
+    properties:
+      <<: *properties_config
+      # <<: *properties_test
+      <<: *properties_base
+      <<: *properties_project
+    sbs:
+      img: /assets/images/art/sbs/dia5.png
+  - artnr: 900010 # BMM
+    descr: Polymac modular Handle fitting solution base frame on which you can install our different metal and plastic modules. Change time in under fifteen minutes.
+    type: bmm
+    description: Modular Handle Fitting Machine Base
+    img: /assets/images/art/bmm-12.png
+    datasheets:
+      - title: BMM-Layout-EN.pdf
+        href: /assets/images/art/layout/A272317-BMM-Layout-EN.pdf
+    properties:
+      <<: *properties_config
+      model:
+        legend: Configuration
+        # defaultValue: S
+        artnr: 900001
+        options:
+          # - value: S 
+          #   title: Standard
+          #   items:
+          #     - Cycletime 5.0 seconds or more per pail
+          - value: SP 
+            title: Plus
+            artnr: 901001
+            items:
+              - Cycletime 3.8 seconds or more per pail
+              - Voorcentreren
+          - value: HP 
+            title: High Performance
+            artnr: 901002
+            items:
+              - Cycletime 2.5 seconds or more per pail
+              - Voorcentreren
+              - High speed doorzetten
+      <<: *properties_base
+      <<: *properties_project
+    sbs:
+      img: /assets/images/art/sbs/dia6.png
+  - artnr: 900011 # MH-BMF
+    descr: Polymac Metal Handle Fitting module to be installed on our BMM Modular Handle en Fitting base. Single product fitting use of metal handles up to 4.3mm.
+    type: mhbmf
+    description: Metal Handle Form and Fitting Module
+    img: /assets/images/art/bmm-bmf-12.png
+    datasheets:
+      - title: MH-BMF-Layout-EN.pdf
+        href: /assets/images/art/layout/A252667-MH-BMF-Layout-EN.pdf
+      - title: BMM-Layout-EN.pdf
+        href: /assets/images/art/layout/A269556-BMM-MH-BMF-Layout-EN.pdf
+    properties:
+      <<: *properties_config
+      # <<: *properties_test
+      <<: *properties_frame
+      <<: *properties_project
+    sbs:
+      img: /assets/images/art/sbs/dia7.png
+  - artnr: 900012 # MH-PBS
+    descr: Polymac Plastic Handle Fitting module to be installed on our BMM Modular Handle en Fitting base. Single product fitting use of plastic strip only handles.
+    type: mhpbs
+    description: Plastic Handle Fitting Machine Strip Module
+    img: /assets/images/art/bmm-pbs-01.png
+    properties:
+      # <<: *properties_test
+      <<: *properties_frame
+      <<: *properties_project
+    sbs:
+      img: /assets/images/art/sbs/dia8.png
+  - artnr: 900013 # MH-PBSB
+    descr: Polymac Plastic Handle Fitting module to be installed on our BMM Modular Handle en Fitting base. Preformed product fitting use of plastic only handles.
+    type: mhpbsb
+    description: Plastic Handle Fitting Machine Fixed Module
+    img: /assets/images/art/bmm-pbsb-01.png
+    properties:
+      control_cabinet_type: *control_cabinet_type
+      # <<: *properties_test
+      <<: *properties_frame
+      <<: *properties_project
+    sbs:
+      img: /assets/images/art/sbs/dia9.png
+  - artnr: 900014 # MH-PBM
+    type: mhpbm
+    description: Plastic Handle Fitting Machine Mat Module
+    img: /assets/images/art/bmm-pbm-01.png
+    properties:
+      <<: *properties_handle_plastic
+      # <<: *properties_test
+      <<: *properties_frame
+      <<: *properties_project
+    sbs:
+      img: /assets/images/art/sbs/dia10.png
+  - artnr: 900101 # PLE - IML
+    descr: Polymac Injection Mould Labeling solution for single up to 8 cavity applications. 
+    type: ple
+    description: IML
+    img: /assets/images/art/ple-12.png
+    properties:
+      <<: *properties_config
+      type:
+        options:
+          - value: SE
+            title: Side Entry
+            items:
+              - Servo Robot
+          - value: TE
+            title: Top Entry
+            items:
+              - Yushin Robot
+      size:
+        options:
+          - value: 10
+            title: < 10 L
+          - value: 20
+            title: < 20 L
+      speed:
+        options:
+          - value: S
+            title: Cycletime > 12 sec
+          - value: SP
+            title: Cycletime > 8 sec
+          - value: HP
+            title: Cycletime < 8 sec
+      cav:
+        legend: Configuration
+        title: Cavities
+        options:
+          - value: 1C
+            title: 1 Cavity
+          - value: 2C
+            title: 2 Cavity
+          - value: 3C
+            title: 3 Cavity
+          - value: 4C
+            title: 4 Cavity
+      # <<: *properties_test
+      <<: *properties_frame
+      <<: *properties_project
+  - artnr: 900102 # PLEA - IML
+    descr: Polymac Injection Mould Labeling solution for single up to 4 cavity with handle fitting functionality.
+    type: plea
+    description: IML
+    img: /assets/images/art/plea-12.png
+    properties:
+      <<: *properties_config
+      # <<: *properties_test
+      <<: *properties_frame
+      <<: *properties_project
+  - artnr: 900103 # PLD - IML
+    type: pld
+    description: IML
+    img: /assets/images/art/pld-12.png
+    properties:
+      <<: *properties_config
+      <<: *properties_lid
+      # <<: *properties_test
+      <<: *properties_base
+      <<: *properties_project
+  - artnr: 900201 # PDS - Destacker
+    type: pds
+    description: Pail De-stacker
+    img: /assets/images/art/A277173-de-stack-12.png
+    properties:
+      <<: *properties_frame
+    sbs:
+      img: /assets/images/art/A277173-de-stack-12.png
+
+
+  - artnr: 901036 # Tight around the pail / rim
+    descr: Polymac developed functionality to roll over the fitted plastic handle strip flush with the pail rim.
+    memo_en: Functie om de plastic beugel om de rand heen te rollen na aanbeugelen
+      (enkel voor stripbeugels die strak om de rand zitten).
+    memo_nl: Functie om de plastic beugel om de rand heen te rollen na aanbeugelen
+      (enkel voor stripbeugels die strak om de rand zitten).
+
+  # - artnr: 900001
+  #   memo_en: Metal Handle Form and Fitting Machine
+  #   memo_de: Metallhenkel-Biege- und Montagemaschine
+  #   memo_fr: Machine à cintrer et à poser les anses métalliques
+  #   memo_nl: Metaalhengsel-buig- en bevestigingsmachine
+  - artnr: 901001
+    descr: Cycletime with the Plus option is speed up to 3.8 seconds or more per pail 
+  #   memo_en: Model Plus
+  #   memo_de: Modell Plus
+  #   memo_fr: Modèle Plus
+  #   memo_nl: Model Plus
+  - artnr: 901002
+    descr: Cycletime with the High Speed option is speed up to 2.5 seconds or more per pail
+  #   memo_en: Model High Speed
+  #   memo_de: Modell High Speed
+  #   memo_fr: Modèle High Speed
+  #   memo_nl: Model High Speed
+  - artnr: 900002
+    descr: 
+  #   memo_en: Metal Handle Form and Fitting Machine Flex
+  #   memo_de: Metallhenkel-Biege- und Montagemaschine Flex
+  #   memo_fr: Machine à cintrer et à poser les anses métalliques Flex
+  #   memo_nl: Metaalhengsel-buig- en bevestigingsmachine Flex
+  # - artnr: 901003
+  #   memo_en: Model Plus
+  #   memo_de: Modell Plus
+  #   memo_fr: Modèle Plus
+  #   memo_nl: Model Plus
+  # - artnr: 900003
+  #   memo_en: Plastic Handle Fitting Machine Strip
+  #   memo_de: Kunststoffhenkel-Montagemaschine Streifen
+  #   memo_fr: Machine à poser les anses plastiques en bande
+  #   memo_nl: Kunststofhengel-bevestigingsmachine Strip
+  # - artnr: 901004
+  #   memo_en: Model Plus
+  #   memo_de: Modell Plus
+  #   memo_fr: Modèle Plus
+  #   memo_nl: Model Plus
+  # - artnr: 901005
+  #   memo_en: Model High Speed
+  #   memo_de: Modell High Speed
+  #   memo_fr: Modèle High Speed
+  #   memo_nl: Model High Speed
+  # - artnr: 900004
+  #   memo_en: Plastic Handle Fitting Machine Fixed Form
+  #   memo_de: Kunststoffhenkel-Montagemaschine Festform
+  #   memo_fr: Machine à poser les anses plastiques à forme fixe
+  #   memo_nl: Kunststofhengel-bevestigingsmachine Vaste Vorm
+  # - artnr: 901006
+  #   memo_en: Model Plus
+  #   memo_de: Modell Plus
+  #   memo_fr: Modèle Plus
+  #   memo_nl: Model Plus
+  # - artnr: 900005
+  #   memo_en: Plastic Handle Fitting Machine Mat Plus
+  #   memo_de: Kunststoffhenkel-Montagemaschine Mat Plus
+  #   memo_fr: Machine à poser les anses plastiques Mat Plus
+  #   memo_nl: Kunststofhengel-bevestigingsmachine Mat Plus
+  # - artnr: 901007
+  #   memo_en: Model High Speed
+  #   memo_de: Modell High Speed
+  #   memo_fr: Modèle High Speed
+  #   memo_nl: Model High Speed
+  # - artnr: 900010
+  #   memo_en: Modular Handle Fitting Machine
+  #   memo_de: Modulare Henkelmontagemaschine
+  #   memo_fr: Machine à poser les anses modulaires
+  #   memo_nl: Modulaire Hengelbevestigingsmachine
+  # - artnr: 900011
+  #   memo_en: Metal Handle Form and Fitting Module Flex
+  #   memo_de: Metallhenkel-Biege- und Montagemodul Flex
+  #   memo_fr: Module de cintrage et de pose d`anses métalliques Flex
+  #   memo_nl: Metaalhengel-buig- en bevestigingsmodule Flex
+  # - artnr: 900012
+  #   memo_en: Plastic Handle Fitting Module Strip
+  #   memo_de: Kunststoffhenkel-Montagemodul Streifen
+  #   memo_fr: Module de pose d`anses plastiques en bande
+  #   memo_nl: Kunststofhengel-bevestigingsmodule Strip
+  # - artnr: 900013
+  #   memo_en: Plastic Handle Fitting Module Fixed Form
+  #   memo_de: Kunststoffhenkel-Montagemodul Festform
+  #   memo_fr: Module de pose d`anses plastiques à forme fixe
+  #   memo_nl: Kunststofhengel-bevestigingsmodule Vaste Vorm
+  # - artnr: 900014
+  #   memo_en: Plastic Handle Fitting Module Mat
+  #   memo_de: Kunststoffhenkel-Montagemodul Mat
+  #   memo_fr: Module de pose d`anses plastiques Mat
+  #   memo_nl: Kunststofhengel-bevestigingsmodule Mat
+  - artnr: 901010
+    memo_en: Extended pitch distance 400 mm > 450 mm #correspondeert met omschrijvingen in T2 > 1 - Engels
+    memo_de: Erweiterter Teilungsabstand 450 mm #correspondeert met omschrijvingen in T2 > 0 - Duits
+    memo_fr: Pas agrandi 450 mm #correspondeert met omschrijvingen in T2 > 2 - Frans
+    memo_nl: Uitgebreide steekafstand 450 mm #correspondeert met omschrijvingen in T2 > 3 - Nederlands
+  - artnr: 901011
+    memo_en: Extra display (other operating side)
+    memo_de: Zusätzlicher Bildschirm (andere Bedienseite)
+    memo_fr: Écran supplémentaire (autre côté de commande)
+    memo_nl: Extra beeldscherm (andere bedieningszijde)
+  - artnr: 901012
+    memo_en: Handgrip on side of pail
+    memo_de: Henkel an der Eimerseite
+    memo_fr: Anse sur le côté du seau
+    memo_nl: Hengel aan de zijkant van de emmer
+  - artnr: 901013
+    memo_en: Handle Side Selection
+    memo_de: Henkelseitenauswahl
+    memo_fr: Sélection du côté de l`anse
+    memo_nl: Hengelzijde-selectie
+  - artnr: 901014
+    descr: Polymac formstation for construction pails with handle fitting ears on the rim.
+    memo_en: Heavy duty formstation
+    memo_de: Schwere Biegestation
+    memo_fr: Poste de cintrage lourd
+    memo_nl: Zware buigstation
+  - artnr: 901015
+    descr: Polymac infeed conveyor for transportation of the pail taken out of the mold to the start of the handle fitting process.  
+    memo_en: Infeed conveyor
+    memo_de: Zuführband
+    memo_fr: Convoyeur d`alimentation
+    memo_nl: Toevoerband
+  - artnr: 901016
+
+    memo_en: Driven in-feed conveyor, 1500mm
+    memo_de: Angetriebenes Zuführband, 1500 mm
+    memo_fr: Convoyeur d`alimentation motorisé, 1500 mm
+    memo_nl: Aangedreven toevoerband, 1500 mm
+  - artnr: 901017
+    memo_en: Extra vertical movement handle fitting station
+    memo_de: Zusätzliche vertikale Bewegung der Henkelmontagestation
+    memo_fr: Mouvement vertical supplémentaire du poste de pose d`anses
+    memo_nl: Extra verticale beweging van de hengelbevestigingsstation
+  - artnr: 901018
+    memo_en: Lift strok extension from 80 to 100 mm
+    memo_de: Hubverlängerung von 80 auf 100 mm
+    memo_fr: Extension de course de levage de 80 à 100 mm
+    memo_nl: Hefslagverlenging van 80 naar 100 mm
+  - artnr: 901019
+    memo_en: Multi bended handle
+    memo_de: Mehrfach gebogener Henkel
+    memo_fr: Anse à cintrages multiples
+    memo_nl: Meervoudig gebogen hengel
+  - artnr: 901020
+    memo_en: Oval Product
+    memo_de: Ovale Produkte
+    memo_fr: Produit ovale
+    memo_nl: Ovaal product
+  - artnr: 901021
+    memo_en: Pushing plastic handle (Jokey)
+    memo_de: Aufschieben des Kunststoffhenkels (Jokey)
+    memo_fr: Enfilage de l`anse plastique (Jokey)
+    memo_nl: Kunststofhengel erop duwen (Jokey)
+  - artnr: 901022
+    memo_en: Sliding doors
+    memo_de: Schiebetüren
+    memo_fr: Portes coulissantes
+    memo_nl: Schuifdeuren
+  - artnr: 901023
+    memo_en: Stacking alternately
+    memo_de: Wechselstapelung
+    memo_fr: Empilage en alternance
+    memo_nl: Afwisselend stapelen
+  - artnr: 901024
+    memo_en: Control Cabinet Cooling / Airconditioning
+    memo_de: Schaltschrankkühlung / Klimaanlage
+    memo_fr: Refroidissement de l`armoire électrique / Climatisation
+    memo_nl: Schakelkastkoeling / Airconditioning
+  - artnr: 901025
+    memo_en: Testing an additional product
+    memo_de: Testen eines zusätzlichen Produkts
+    memo_fr: Test d`un produit supplémentaire
+    memo_nl: Testen van een extra product
+  - artnr: 901026
+    memo_en: Product with a different handle
+    memo_de: Produkt mit anderem Henkel
+    memo_fr: Produit avec une anse différente
+    memo_nl: Product met een andere hengel
+  - artnr: 901027
+    memo_en: Product with difference in diameter but the same wire diameter
+    memo_de: Produkt mit Durchmesserabweichung, aber gleichem Drahtdurchmesser
+    memo_fr: Produit avec une différence de diamètre mais le même diamètre de fil
+    memo_nl: Product met diameterafwijking maar dezelfde draaddiameter
+  - artnr: 901028
+    memo_en: Product with difference in diameter and a different handle
+    memo_de: Produkt mit Durchmesserabweichung und anderem Henkel
+    memo_fr: Produit avec une différence de diamètre et une anse différente
+    memo_nl: Product met diameterafwijking en een andere hengel
+  - artnr: 901029
+    memo_en: BM two wire diameters*
+    memo_de: BM zwei Drahtdurchmesser*
+    memo_fr: BM deux diamètres de fil*
+    memo_nl: BM twee draaddiameters*
+  - artnr: 901030
+    memo_en: BM two wire length*
+    memo_de: BM zwei Drahtlängen*
+    memo_fr: BM deux longueurs de fil*
+    memo_nl: BM twee draadlengtes*
+  - artnr: 901031
+    memo_en: Knob inspection vision
+    memo_de: Knopf-Inspektionskamera
+    memo_fr: Inspection visuelle des boutons
+    memo_nl: Knop-inspectiecamera
+  - artnr: 901032
+    memo_en: Less price plastic grip feeder
+    memo_de: Preisreduzierung Kunststoffgriff-Zuführung
+    memo_fr: Réduction de prix pour le distributeur de poignées plastiques
+    memo_nl: Prijsverlaging kunststofgreep-toevoer
+  - artnr: 901033
+    memo_en: 'Plastic grip detection '
+    memo_de: Kunststoffgrifferkennung
+    memo_fr: Détection des poignées plastiques
+    memo_nl: Kunststofgreepdetectie
+  - artnr: 901034
+    memo_en: Earhole on top of pail rim (building industry pre-centring needed
+    memo_de: Öhrchen oben am Eimerrand (Bauindustrie, Vorzentrierung erforderlich)
+    memo_fr: >-
+      Trou d`oreille sur le bord supérieur du seau (pré-centrage nécessaire pour
+      l`industrie du bâtiment)
+    memo_nl: Oortje bovenop de emmerrand (bouwindustrie, voorcentreren nodig)
+  - artnr: 901035
+    memo_en: Water cooling
+    memo_de: Wasserkühlung
+    memo_fr: Refroidissement par eau
+    memo_nl: Waterkoeling
+  - artnr: 901036
+    memo_en: Tight around the pail
+    memo_de: Fest um den Eimer
+    memo_fr: Bien serré autour du seau
+    memo_nl: Straks om de emmer
+  - artnr: 901037
+    memo_en: Extra buffer strips handles for extra prod capacity
+    memo_de: Zusätzliche Pufferleisten für Henkel zur Erhöhung der Produktionskapazität
+    memo_fr: >-
+      Barres tampons supplémentaires pour anses pour capacité de production
+      supplémentaire
+    memo_nl: Extra bufferstrips voor hengels voor extra productiecapaciteit
+  - artnr: 901038
+    memo_en: Double Handle Infeed for PBSB
+    memo_de: Doppelzuführung für PBSB
+    memo_fr: Double alimentation pour PBSB
+    memo_nl: Dubbele toevoer voor PBSB
+  - artnr: 901039
+    memo_en: Top Cover
+    memo_de: Oberabdeckung
+    memo_fr: Couvercle supérieur
+    memo_nl: Bovenafdekking
+  - artnr: 901040
+    memo_en: 90° Product Out Feed
+    memo_de: 90°-Abförderung
+    memo_fr: Évacuation à 90°
+    memo_nl: 90°-afvoer
+  - artnr: 901041
+    memo_en: Batchrun
+    memo_de: Chargenlauf
+    memo_fr: Exécution par lots
+    memo_nl: Batchrun
+  - artnr: 901042
+    memo_en: Reject Outfeed Roller Conveyor
+    memo_de: Zusätzliche Rollenbahn für Ausschuss
+    memo_fr: Rouleau transporteur supplémentaire pour les rebuts
+    memo_nl: Extra rollenbaan voor afkeur
+  - artnr: 901043
+    memo_en: Roller Conveyor Extension (1 Meter), with plastic rollers
+    memo_de: Zusätzliche Rollenbahn pro Meter, mit Kunststoffrollen
+    memo_fr: Rouleau transporteur supplémentaire par mètre, avec rouleaux en plastique
+    memo_nl: Extra rollenbaan per meter, met kunststof rollen
+  - artnr: 901044
+    memo_en: Outfeed Conveyor with Steel Rollers
+    memo_de: Preisaufschlag Stahlrollen
+    memo_fr: Supplément de prix pour rouleaux en acier
+    memo_nl: Meerprijs stalen rollen
+  - artnr: 901045
+    memo_en: Metal containing tywraps
+    memo_de: Metallhaltige Kabelbinder
+    memo_fr: Colliers de serrage contenant du métal
+    memo_nl: Metaalhoudende tyraps
+  - artnr: 901046
+    memo_en: Integrated Remote Support
+    memo_de: Integrierter Remote-Support
+    memo_fr: Support à distance intégré
+    memo_nl: Gintegreerd onderstening op afstand. Bevat
+      Ethernet Interfaces
+      IPC
+      10 jaar abbonement
+    items:
+      - IPC
+      - External UTP connector
+      - Teltonica Modem
+      - Abonnement 10 jaar
+      - Exclusief ondersteunings uren
+  - artnr: 901047
+    memo_en: 110V Single Power Outlet
+    memo_de: 110V Einzelsteckdose
+    memo_fr: Prise de courant 110V
+    memo_nl: 110V Enkele stopcontact
+  - artnr: 901048
+    memo_en: CWL Detection
+    memo_de: CWL-Erkennung
+    memo_fr: Détection CWL
+    memo_nl: CWL-detectie
+  - artnr: 901049
+    memo_en: Data Matrix Code inspection with reader
+    memo_de: Dot-Matrix- / Barcode-Leser
+    memo_fr: Lecteur de code à points / code-barres
+    memo_nl: Dot matrix / barcode lezer
+  - artnr: 901050
+    memo_en: 'Extra Keyence '
+    memo_de: Zusätzliche Keyence
+    memo_fr: Keyence supplémentaire
+    memo_nl: Extra Keyence
+  - artnr: 901051
+    memo_en: UL Spec
+    memo_de: UL-Spezifikation
+    memo_fr: Spécification UL
+    memo_nl: UL-specificatie
+  - artnr: 901052
+    memo_en: UL Specs with safety
+    memo_de: UL-Spezifikation mit Sicherheit
+    memo_fr: Spécification UL avec sécurité
+    memo_nl: UL-specificatie met veiligheid
+  - artnr: 902001
+    memo_en: PLE-SE, 2 Cavaty, < 10L, > 12 sec
+  - artnr: 902011
+    memo_en: Plus, 8-12 sec
+  - artnr: 902012
+    memo_en: High Speed, < 8 sec
+  - artnr: 902013
+    memo_en: '> 10 L'
+  - artnr: 902002
+    memo_en: PLE-SE, 2 Cavaty, < 10L, > 12 sec
+  - artnr: 902021
+    memo_en: Plus, > 8 sec
+  - artnr: 902022
+    memo_en: High Speed, < 8 sec
+  - artnr: 902023
+    memo_en: '> 10 L '
+  - artnr: 902003
+    memo_en: IML Robot Lid
+  - artnr: 902031
+    memo_en: PLD-SE 2 cav 2-20L
+  - artnr: 902032
+    memo_en: PLE-SE 1 cav 5-15L
+  - artnr: 902004
+    memo_en: IML Robot Tube
+  - artnr: 902005
+    memo_en: Pail Stack Palletiser
+  - artnr: 902101
+    memo_en: BM Stacker
+  - artnr: 902102
+    memo_en: Stapelaar (Servo)
+  - artnr: 902103
+    memo_en: Stapelaar Servo < 8 sec
+  - artnr: 902104
+    memo_en: extra Stacking belt- ONLY IN COMBINATION WITH SERVOSTACKER
+  - artnr: 902105
+    memo_en: Camera for Unique spot identification (Omron)
+  - artnr: 902106
+    memo_en: Camerasystem (1 camera) with pail not rotating one picture
+  - artnr: 902107
+    memo_en: Camerasystem (1 camera) with pail rotating on take over arm 4 pictures
+  - artnr: 902108
+    memo_en: >-
+      Camerasystem for cycletime <6 sec in discharge conveyor -one camera -4
+      pictures)
+  - artnr: 902109
+    memo_en: Check moulded handle to pail
+  - artnr: 902110
+    memo_en: Corridor
+  - artnr: 902111
+    memo_en: Exchange set labelgrabbers
+  - artnr: 902112
+    memo_en: 'Height adjustment long belt >2.000 < 4.000mm, with pusher '
+  - artnr: 902113
+    memo_en: Height adjustment short belt <2.000 mm
+  - artnr: 902114
+    memo_en: IMM position check
+  - artnr: 902115
+    memo_en: Innerlight only thin wall pails
+  - artnr: 902116
+    memo_en: Ionisation bar 420 mm long 5 mtr cable D connector
+  - artnr: 902117
+    memo_en: Label grabber in quick change configuration
+  - artnr: 902118
+    memo_en: Motor driven magazine
+  - artnr: 902119
+    memo_en: Mould safety (sensor)
+  - artnr: 902120
+    memo_en: Prepared for Camera*
+  - artnr: 902121
+    memo_en: Pushing plastic handle (Jokey)
+  - artnr: 902122
+    memo_en: Pushing product
+  - artnr: 902123
+    memo_en: Servo driven spreader
+  - artnr: 902124
+    memo_en: 'Stacking with take over '
+  - artnr: 902125
+    memo_en: 'Translation Intravis '
+  - artnr: 902126
+    memo_en: Translation manual / displays
+  - artnr: 902127
+    memo_en: Extra vacuumpump
+  - artnr: 902201
+    memo_en: Rotation point per mandrel
+  - artnr: 902202
+    memo_en: Mandrel round 4-7 Litres
+  - artnr: 902203
+    memo_en: Mandrel round 8-10 Litres
+  - artnr: 902204
+    memo_en: Mandrel round 11-15 Litres
+  - artnr: 902205
+    memo_en: Mandrel round 16-20 Litres
+  - artnr: 902206
+    memo_en: Mandrel square  4-7 Litres
+  - artnr: 902207
+    memo_en: Mandrel square 8-10 Litres
+  - artnr: 902208
+    memo_en: Mandrel square 11-15 Litres
+  - artnr: 902209
+    memo_en: Mandrel square 16-20 Litres
+  - artnr: 910001
+    memo_en: Travel Cost
+    memo_de: Tickets (Flug/Bahn/o.ä.)
+    memo_nl: Reis kosten
+  - artnr: 910002
+    memo_en: Car per kilometre
+    memo_de: Auto pro Kilometer
+    memo_nl: Kilometer vergoeding
+  - artnr: 910003
+    memo_en: Stay / Expenses / Hotel / etc.
+    memo_de: Übernachtungspauschale / Hotelkosten
+    memo_nl: Verblijf kosten
+  - artnr: 910004
+    memo_en: Meals
+    memo_de: Mahlzeiten / Verpflegung (Spesenpauschale)
+    memo_nl: Maaltijden
+  - artnr: 910011
+    memo_en: Travel Hours, Monday till Friday
+    memo_de: Reise-stunden Montag bis Freitag
+    memo_nl: Reis-uren
+  - artnr: 910012
+    memo_en: Working Hours, Monday till Friday
+    memo_de: Arbeits-stunden Montag bis Freitag
+    memo_nl: Werk-uren
+  - artnr: 910013
+    memo_en: Working Hours, Weekend and Holidays
+    memo_de: Arbeits-stunden Wochenende / Feiertage
+    memo_nl: Werk-uren weekend
+  - artnr: 910014
+    memo_en: Travel Hours, Weekend and Holidays
+    memo_de: Reise-stunden Wochenende / Feiertage
+    memo_nl: Reis-uren weekend
+  - artnr: 910015
+    memo_en: Remote support, start tariff incl. 2 hours support
+    memo_de: Remote Support, Starttarif inkl. 2 Stunden Unterstützung
+  - artnr: 910016
+    memo_en: Remote support, additional hours
+    memo_de: Remote Support, nachfolgende Stunden
+  - artnr: 910021
+    memo_en: Packing (MH-B, MH-PBS, MH-BMF)
+  - artnr: 910022
+    memo_en: Packing Overseas
+  - artnr: 910023
+    memo_en: Packing Overseas
+  - artnr: 910024
+    memo_en: Transport TBD
+  - artnr: 910025
+    memo_en: CIF
+  - artnr: 910026
+    memo_en: DAP
+  - artnr: 910027
+    memo_en: 'Installation and commissioning '
+  - artnr: 910028
+    memo_en: Video
+  - artnr: 910029
+    memo_en: Client FAT
+  - artnr: 910030
+    memo_en: Extra 12 months warranty after first year
+
+
+  # - type: pfs
+  #   description: IML
+  #   properties:
+  #     <<: *properties_test
+  #     <<: *properties_base
+  #     <<: *properties_project
+  #   row:
+  #     cycle_time: 5.0 seconds or more per pail
